@@ -2,7 +2,7 @@ import { ArrowLeft, ArrowRight, Circle} from "lucide-react";
 import { useEffect, useState } from "react";
 import ItemDisplay from "./ItemDisplay";
 
-function MainDisplay({data}) {
+function MainDisplay({data, height}) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   function showNext(){
@@ -37,8 +37,8 @@ function MainDisplay({data}) {
   return (
     <>
       <div 
-      className="relative w-[90vw] h-[650px] rounded-2xl bg-white 
-        flex flex-col items-center"
+      className={`relative w-[90vw] h-[650px] rounded-2xl bg-white 
+        flex flex-col items-center`}
       >
         <ItemDisplay  data={data} currentIndex={currentIndex}/>
         <button 
@@ -60,7 +60,7 @@ function MainDisplay({data}) {
       </div>
       <div className='flex gap-2 top-4 justify-center py-2'>
         {data.map((item, index )=> (
-          <div className='cursor-pointer' key={index}>
+          <div className='mb-10' key={index}>
             <Circle 
               onClick={() =>setCurrentIndex(index)} 
               className={index === currentIndex ? 'bg-black rounded-full duration-75' : ''}/>

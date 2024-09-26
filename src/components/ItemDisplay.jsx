@@ -1,6 +1,8 @@
 import { Star } from "lucide-react";
+import { useState } from "react";
 
 function ItemDisplay({data, currentIndex}) {
+  const [isShown, setIsShown] = useState(false);
   function renderStars(rating) {
     const stars = [];
     for (let i =0; i < 5; i++){
@@ -20,11 +22,23 @@ function ItemDisplay({data, currentIndex}) {
     return stars;
   }
 
+  function truncateDescription(description, maxLength = 100) {
+    if (description.length > maxLength) {
+      return description.slice(0, maxLength) + '...';
+    }
+    return description;
+  }
+
+  function toggleDescription() {
+    setIsShown(!isShown)
+  }
+
   return (
     <div 
       className="w-full h-full flex flex-col items-center gap-4 
       transition-opacity duration-500 ease-in-out opacity-100"
       key={currentIndex}
+      onTouchStart={toggleDescription}
       >
         <h2 className="text-xl text-center font-bold pt-4">
           {data[currentIndex].title}
@@ -33,9 +47,18 @@ function ItemDisplay({data, currentIndex}) {
           src={data[currentIndex].image} 
           className="w-[80%] h-[50%]"
         />
-        <p className="text-center text-sm px-2">
-          {data[currentIndex].description}
-        </p>
+        <div className="text-center text-sm px-2">
+          {isShown ? 
+            <p className="bg-white w-full absolute 
+            left-0 top-[40%] shadow-lg rounded-md">
+              {data[currentIndex].description}
+            </p> 
+            :
+            <p>
+              {truncateDescription(data[currentIndex].description, 250)}
+            </p>
+          }
+        </div>
         <div 
           className="w-full flex justify-between self-start px-4 mt-4
           absolute bottom-4
