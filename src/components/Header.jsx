@@ -3,9 +3,11 @@ import headerBg from '../assets/headerBg.webp';
 import MobileMenu from "./MobileMenu";
 import { Menu, X } from 'lucide-react';
 import HeaderCart from "./HeaderCart";
+import CartStatus from "./CartStatus";
 
 function Header({isMobile}) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
 
   function toggleMenu() {
     setIsMenuOpen(!isMenuOpen)
@@ -38,7 +40,8 @@ function Header({isMobile}) {
           p-4 mt-40">
         Type something here
       </h1>
-        <HeaderCart />
+        <HeaderCart setIsCartOpen={setIsCartOpen}/>
+        <CartStatus isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen}/>
     </header>
   )
 }

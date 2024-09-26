@@ -34,10 +34,6 @@ function App() {
     getData();
   }, []);
 
-  useEffect(() => {
-    console.log(data)
-  }, [data])
-
   return (
     <>
       <Header isMobile={isMobile}/>
