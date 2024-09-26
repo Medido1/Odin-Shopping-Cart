@@ -6,10 +6,6 @@ function ItemDisplay({data, currentIndex}) {
   const [isShown, setIsShown] = useState(false);
   const {state ,addItem} = useContext(GlobalContext)
 
-  useEffect(() => {
-    console.log(state.totalItems)
-  }, [state])
-
   function renderStars(rating) {
     const stars = [];
     for (let i =0; i < 5; i++){
