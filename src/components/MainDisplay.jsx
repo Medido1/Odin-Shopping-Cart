@@ -37,7 +37,7 @@ function MainDisplay({data, height}) {
   return (
     <>
       <div 
-      className={`relative w-[90vw] h-[650px] rounded-2xl bg-white 
+      className={`relative w-[90vw] h-[700px] rounded-2xl bg-white 
         flex flex-col items-center`}
       >
         <ItemDisplay  data={data} currentIndex={currentIndex}/>

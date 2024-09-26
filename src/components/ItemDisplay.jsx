@@ -1,4 +1,4 @@
-import { Star } from "lucide-react";
+import { Star, ShoppingBasket } from "lucide-react";
 import { useState } from "react";
 
 function ItemDisplay({data, currentIndex}) {
@@ -50,18 +50,18 @@ function ItemDisplay({data, currentIndex}) {
         <div className="text-center text-sm px-2">
           {isShown ? 
             <p className="bg-white w-full absolute 
-            left-0 top-[40%] shadow-lg rounded-md">
+            left-0 top-[40%] shadow-lg rounded-md p-4">
               {data[currentIndex].description}
             </p> 
             :
             <p>
-              {truncateDescription(data[currentIndex].description, 250)}
+              {truncateDescription(data[currentIndex].description, 200)}
             </p>
           }
         </div>
         <div 
           className="w-full flex justify-between self-start px-4 mt-4
-          absolute bottom-4
+          absolute bottom-16
         ">
           <p className="text-lg font-bold">
             {`${data[currentIndex].price}$`}
@@ -69,6 +69,13 @@ function ItemDisplay({data, currentIndex}) {
           <ul className="flex gap-2">
             {renderStars(Math.ceil(data[currentIndex].rating.rate))}
           </ul>
+        </div>
+        <div 
+          className="flex gap-4 absolute bottom-5 border border-black
+            px-4 py-2 bg-slate-100 rouned-lg
+          ">
+          <p>Add to cart</p>
+          <ShoppingBasket />
         </div>
       </div>
   )

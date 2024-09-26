@@ -41,7 +41,10 @@ function Header({isMobile}) {
         Type something here
       </h1>
         <HeaderCart setIsCartOpen={setIsCartOpen}/>
-        <CartStatus isCartOpen={isCartOpen} setIsCartOpen={setIsCartOpen}/>
+        <CartStatus 
+          isCartOpen={isCartOpen} 
+          setIsCartOpen={setIsCartOpen}
+          />
     </header>
   )
 }

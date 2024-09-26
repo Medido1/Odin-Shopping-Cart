@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import MainDisplay from "./MainDisplay";
 
-function Main({data}) {
+function Main({data, itemNumber, setItemNumber}) {
   const [menClothing, setMenClothing] = useState([]);
   const [jewelery, setJewelery] = useState([]);
   const [electronics, setElectronics] = useState([]);
