@@ -10,7 +10,7 @@ function HeaderCart(){
 
     >
       <p>{`${state.totalItems} ${state.totalItems === 1 ? "Item" :"items"}`}</p>
-      <p>Total: </p>
+      <p>Total: {`${state.totalPrice}$`}</p>
       <ShoppingCart />
     </div>
   )

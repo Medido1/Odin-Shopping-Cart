@@ -4,7 +4,9 @@ import { GlobalContext } from "../context/GlobalState";
 
 function ItemDisplay({data, currentIndex}) {
   const [isShown, setIsShown] = useState(false);
-  const {state ,addItem} = useContext(GlobalContext)
+  const {addItem, state} = useContext(GlobalContext);
+
+
 
   function renderStars(rating) {
     const stars = [];
@@ -36,6 +38,8 @@ function ItemDisplay({data, currentIndex}) {
     setIsShown(!isShown)
   }
 
+  const currentItem = data[currentIndex]
+
   return (
     <div 
       className="w-full h-full flex flex-col items-center gap-4 
@@ -43,10 +47,10 @@ function ItemDisplay({data, currentIndex}) {
       key={currentIndex}
       >
         <h2 className="text-xl text-center font-bold pt-4">
-          {data[currentIndex].title}
+          {currentItem.title}
         </h2>
         <img 
-          src={data[currentIndex].image} 
+          src={currentItem.image} 
           className="w-[80%] h-[50%]"
         />
         <div 
@@ -56,11 +60,11 @@ function ItemDisplay({data, currentIndex}) {
           {isShown ? 
             <p className="bg-white w-full absolute 
             left-0 top-[40%] shadow-lg rounded-md p-4">
-              {data[currentIndex].description}
+              {currentItem.description}
             </p> 
             :
             <p>
-              {truncateDescription(data[currentIndex].description, 200)}
+              {truncateDescription(currentItem.description, 200)}
             </p>
           }
         </div>
@@ -69,16 +73,17 @@ function ItemDisplay({data, currentIndex}) {
           absolute bottom-16
         ">
           <p className="text-lg font-bold">
-            {`${data[currentIndex].price}$`}
+            {`${currentItem.price}$`}
           </p>
           <ul className="flex gap-2">
-            {renderStars(Math.ceil(data[currentIndex].rating.rate))}
+            {renderStars(Math.ceil(currentItem.rating.rate))}
           </ul>
         </div>
         <button
           className="flex gap-4 absolute bottom-5 border border-black
           px-4 py-2 bg-slate-100 rouned-lg"
-          onClick={addItem}
+          onClick={() => 
+            addItem({title: currentItem.title, price: currentItem.price})}
       >
           <p>Add to cart</p>
           <ShoppingBasket />
