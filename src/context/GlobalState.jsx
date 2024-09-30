@@ -5,6 +5,8 @@ const initialState = {
   totalItems: 0,
   items : [],
   totalPrice : 0,
+  showCart: false,
+  confirmed: false,
 };
 
 export const GlobalContext = createContext(initialState);
@@ -19,8 +21,26 @@ export const GlobalProvider = ({ children }) => {
     })
   }
 
+  function toggleCart() {
+    dispatch({
+      type: "toggle_cart",
+    })
+  }
+
+  function confirmOrder() {
+    dispatch({
+      type: "confirm_order",
+    })
+  }
+
+  function resetOrder() {
+    dispatch({
+      type: "reset_order",
+    })
+  }
+
   return (
-    <GlobalContext.Provider value={{ state, addItem }}>
+    <GlobalContext.Provider value={{ state, addItem, toggleCart, confirmOrder, resetOrder }}>
       {children}
     </GlobalContext.Provider>
   );

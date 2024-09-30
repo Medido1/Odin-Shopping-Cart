@@ -4,9 +4,7 @@ import { GlobalContext } from "../context/GlobalState";
 
 function ItemDisplay({data, currentIndex}) {
   const [isShown, setIsShown] = useState(false);
-  const {addItem, state} = useContext(GlobalContext);
-
-
+  const { addItem } = useContext(GlobalContext);
 
   function renderStars(rating) {
     const stars = [];
@@ -38,7 +36,7 @@ function ItemDisplay({data, currentIndex}) {
     setIsShown(!isShown)
   }
 
-  const currentItem = data[currentIndex]
+  const currentItem = data[currentIndex];
 
   return (
     <div 
@@ -83,7 +81,11 @@ function ItemDisplay({data, currentIndex}) {
           className="flex gap-4 absolute bottom-5 border border-black
           px-4 py-2 bg-slate-100 rouned-lg"
           onClick={() => 
-            addItem({title: currentItem.title, price: currentItem.price})}
+            addItem({
+              title: currentItem.title, 
+              price: currentItem.price,
+              image: currentItem.image,
+              number : 1})}
       >
           <p>Add to cart</p>
           <ShoppingBasket />

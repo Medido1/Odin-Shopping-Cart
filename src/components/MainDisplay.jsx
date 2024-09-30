@@ -2,7 +2,7 @@ import { ArrowLeft, ArrowRight, Circle} from "lucide-react";
 import { useEffect, useState } from "react";
 import ItemDisplay from "./ItemDisplay";
 
-function MainDisplay({data, height}) {
+function MainDisplay({data}) {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   function showNext(){
