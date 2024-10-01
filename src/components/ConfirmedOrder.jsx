@@ -9,7 +9,7 @@ function ConfirmedOrder() {
   }
   return (
     <div className="w-[90vw] h-[200px] bg-red-400 rounded-3xl
-    absolute top-10 left-5 p-8 flex flex-col items-center">
+    fixed top-10 left-5 p-8 flex flex-col items-center">
         <div className='flex gap-4 items-center mb-4'>
           <PackageCheck />
           <h1 className='text-xl'>Order Confirmed!!</h1>

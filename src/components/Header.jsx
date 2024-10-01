@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import headerBg from '../assets/headerBg.webp';
 import MobileMenu from "./MobileMenu";
 import { Menu, X } from 'lucide-react';
@@ -30,14 +30,17 @@ function Header({isMobile}) {
             >
               {isMenuOpen ? <X color="white"/> : <Menu color="white"/>}
             </button>
-            <MobileMenu isMenuOpen={isMenuOpen}/>
+            <MobileMenu 
+              isMenuOpen={isMenuOpen}
+              setIsMenuOpen={setIsMenuOpen}
+            />
           </>
         }
       </div>
       <h1 
         className="text-2xl text-white font-bold border border-white text-center
           p-4 mt-40">
-        Type something here
+        Medidoss express
       </h1>
         <HeaderCart/>
     </header>

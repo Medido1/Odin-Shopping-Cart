@@ -1,5 +1,5 @@
 import { Star, ShoppingBasket } from "lucide-react";
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 
 function ItemDisplay({data, currentIndex}) {

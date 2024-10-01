@@ -6,7 +6,6 @@ import FullCart from './components/FullCart';
 
 function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
-  const [data, setData] = useState([]);
   const { state } = useContext(GlobalContext);
 
   useEffect(() => {
@@ -19,30 +18,11 @@ function App() {
     }
   }, [])
 
-  async function getData() {
-    try {
-      const response = await fetch(
-        'https://fakestoreapi.com/products',
-        {mode: "cors"}
-      );
-      const fullData = await response.json();
-      setData(fullData);
-    } catch(err){
-      console.log(err);
-      return;
-    }
-  }
-
-  useEffect(() => {
-    getData();
-  }, []);
-
-
   return (
     <>
       <FullCart showCart={state.showCart}/>
       <Header isMobile={isMobile}/>
-      <Main data = {data}/>
+      <Main/>
     </>
   )
 }
