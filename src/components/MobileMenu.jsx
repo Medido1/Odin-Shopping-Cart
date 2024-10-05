@@ -6,14 +6,18 @@ function MobileMenu({isMenuOpen, setIsMenuOpen}) {
   }
 
   return (
-    <div className={`w-[90vw] max-w-[500px] p-4 absolute
+    <div className={`w-[90vw] max-w-[600px] p-4 absolute
      left-[5%] rounded-lg shadow-lg transition-[top] duration-1000 ease-in-out 
-     ${isMenuOpen ? "top-[15%]": "top-[-100%]"}`}
-     style={{backgroundColor: "rgba(248,248,248, .5)"}}
+     bg-mobileMenu
+     ${isMenuOpen ? "top-[15%]": "top-[-100%]"}
+     md:top-[10%] md:static md:shadow-none md:bg-transparent md:w-[200px]`}
+  
      role="menu"
      id="mobileMenu"
     >
-      <ul className="flex flex-col items-center gap-2 font-bold">
+      <ul 
+        className="flex flex-col items-center gap-2 font-bold
+          md:flex-row md:text-white md:gap-4">
         <li>
           <Link 
             to="/"

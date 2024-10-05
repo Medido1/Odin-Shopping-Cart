@@ -23,15 +23,19 @@ function ShopDisplay({data, title}) {
     return stars;
   }
   return (
-    <div className="w-[100vw] p-4">
-      <h2 className="text-white text-xl text-center mb-4 font-bold">
+    <div className="w-[100vw] p-4 flex flex-col items-center">
+      <h2 className="text-white text-2xl text-center mb-4 font-bold">
         {title}
       </h2>
-      <ul>
+      <ul
+        className="grid sm:grid-cols-2 sm:gap-4 
+          lg:grid-cols-3"  
+      >
         {data.map((category) => {
           return <li
-            className="flex flex-col gap-4 align-center
-             border-b border-black p-4 bg-white mb-4 rounded-3xl"  
+            className="flex flex-col gap-4  max-w-[300px]
+             border-b border-black p-4 bg-white mb-4 rounded-3xl
+             relative"  
             key={category.title}
             >
             <h3 className="text-center">
@@ -51,7 +55,7 @@ function ShopDisplay({data, title}) {
             </div>
             <button
               className="flex gap-4 border border-black
-              px-4 py-2 bg-slate-100 rouned-lg self-center"
+              px-4 py-2 bg-slate-100 rounded-lg self-center"
               onClick={() => 
                 addItem({
                   title: category.title, 

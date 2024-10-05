@@ -18,7 +18,7 @@ function FullCart({showCart}) {
   
   return (
     <div 
-      className={`fixed bg-slate-200 w-full h-full p-4 top-0 
+      className={`fixed bg-slate-200 w-full max-w-[600px] h-full p-4 top-0 
       shadow-2xl flex flex-col overflow-y-auto
       z-10 transition-[left] duration-1000 ease-in-out
       ${showCart ? 'left-0' : 'left-[200%]'}`}>

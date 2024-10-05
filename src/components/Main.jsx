@@ -23,7 +23,7 @@ function Main() {
     getData();
   }, []);
   return (
-    <main className="bg-slate-900 py-10 px-5 flex flex-col items-center">
+    <main className="bg-slate-700 py-10 px-5 flex flex-col items-center">
       <Outlet context={{data}}/>
     </main>
   )

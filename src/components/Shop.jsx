@@ -27,7 +27,7 @@ function Shop(){
   
   return (
     <div className=' w-full'>
-      <h2 className='text-white text-2xl font-bold px-2 py-4'>
+      <h2 className='text-white text-3xl text-center font-bold px-2 py-4'>
         Medidoss express
       </h2>
       <div>
