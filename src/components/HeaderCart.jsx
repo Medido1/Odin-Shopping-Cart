@@ -1,9 +1,19 @@
 import { ShoppingCart } from 'lucide-react';
 import { GlobalContext } from '../context/GlobalState';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 
 function HeaderCart(){
   const { state, toggleCart} = useContext(GlobalContext);
+  const totalNumber = state.items.reduce((acc, item) => {
+    return acc + item.number
+  }, 0);
+  const totalPrice = state.items.reduce((acc, item) => {
+    return acc + (item.price * item.number)
+  }, 0)
+
+  useEffect(() => {
+    console.log(state.items)
+  }, [state])
 
   return (
     <div className={`w-[90vw] flex justify-around fixed 
@@ -12,8 +22,8 @@ function HeaderCart(){
      lg:top-[580px] xl:top-[580px]`
     }
     >
-      <p>{`${state.totalItems} ${state.totalItems === 1 ? "Item" :"items"}`}</p>
-      <p>Total: {`${(state.totalPrice).toFixed(2)}$`}</p>
+      <p>{`${totalNumber} ${totalNumber === 1 ? "Item" :"items"}`}</p>
+      <p>Total: {`${(totalPrice).toFixed(2)}$`}</p>
       <button 
         className='flex gap-2'
         onClick={toggleCart}

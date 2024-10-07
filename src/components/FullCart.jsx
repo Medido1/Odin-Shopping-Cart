@@ -1,15 +1,17 @@
 import { GlobalContext } from "../context/GlobalState";
-import { useContext, useState } from "react";
+import { useContext, useEffect} from "react";
 import emptyCartImg from '../assets/emptycart.png';
 import ConfirmedOrder from "./ConfirmedOrder";
+import { BadgeX } from 'lucide-react';
 
 function FullCart({showCart}) {
-  const { state, confirmOrder} = useContext(GlobalContext);
+  const { state, confirmOrder, deleteOrder} = useContext(GlobalContext);
+  const totalNumber = state.items.length;
 
   function handleOpen() {
     confirmOrder();
   }
-  
+
   if (showCart) {
     document.body.style.overflow = 'hidden';
   } else {
@@ -23,15 +25,15 @@ function FullCart({showCart}) {
       z-10 transition-[left] duration-1000 ease-in-out
       ${showCart ? 'left-0' : 'left-[200%]'}`}>
         <h2 className="text-2xl font-bold text-center mb-4 pt-8">
-          {`Your Cart (${state.totalItems})`}
+          {`Your Cart (${totalNumber})`}
         </h2>
-        {state.totalItems === 0 && 
+        {totalNumber === 0 && 
           <img 
             className="mt-4 self-center"
             src={emptyCartImg} 
             alt="empty cart image" />
         }
-        {state.totalItems > 0 &&
+        {totalNumber > 0 &&
           <ul>
             {state.items.map((item) => {
               return <li 
@@ -50,6 +52,11 @@ function FullCart({showCart}) {
                     <p>
                       {item.price * item.number}$
                     </p>
+                    <button
+                      onClick={() => deleteOrder(item.title)}
+                    >
+                      <BadgeX />
+                    </button>
                   </div>
                 </div>
                 <img 

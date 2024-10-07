@@ -4,9 +4,8 @@ import { useContext } from 'react';
 
 function ConfirmedOrder() {
   const { resetOrder } = useContext(GlobalContext);
-  function returnHome() {
-    resetOrder();
-  }
+  
+ 
   return (
     <div className="w-[90vw] h-[200px] bg-red-400 rounded-3xl
     fixed top-10 left-5 p-8 flex flex-col items-center">

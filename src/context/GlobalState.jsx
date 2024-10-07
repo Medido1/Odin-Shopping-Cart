@@ -2,9 +2,7 @@ import { createContext, useReducer } from "react";
 import AppReducer from "./AppReducer";
 
 const initialState = {
-  totalItems: 0,
   items : [],
-  totalPrice : 0,
   showCart: false,
   confirmed: false,
 };
@@ -39,8 +37,22 @@ export const GlobalProvider = ({ children }) => {
     })
   }
 
+  function deleteOrder(title) {
+    dispatch({
+      type: "delete_order",
+      payload: title,
+    })
+  }
+
   return (
-    <GlobalContext.Provider value={{ state, addItem, toggleCart, confirmOrder, resetOrder }}>
+    <GlobalContext.Provider value={{ 
+      state, 
+      addItem, 
+      toggleCart, 
+      confirmOrder, 
+      resetOrder,
+      deleteOrder,
+      }}>
       {children}
     </GlobalContext.Provider>
   );

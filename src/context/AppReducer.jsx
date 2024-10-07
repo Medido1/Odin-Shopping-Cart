@@ -4,29 +4,20 @@ export default (state, action) => {
       const existingItem = state.items.find(
         (item) => item.title === action.payload.title
       )
-
-      if (existingItem) {
+      if (existingItem){
         return {
           ...state,
-          totalItems: state.totalItems + 1,
-          items: state.items.map((item) => {
-            return item.title === action.payload.title ?
-            {...item, number: item.number + 1} :
-            item
-          }),
-          totalPrice :state.items.reduce((acc, item) => {
-            return acc + item.price
-          }, 0) + action.payload.price
+          items: state.items.map((item) => 
+          item.title === action.payload.title 
+          ? { ...item, number: item.number + 1 } 
+          : item
+        )}
+      } else {
+        return {
+          ...state,
+          items: [action.payload, ...state.items]
         }
       }
-      return {
-        ...state,
-        totalItems: state.totalItems + 1,
-        items: [{ ...action.payload, number: 1 }, ...state.items],
-        totalPrice :state.items.reduce((acc, item) => {
-          return acc += item.price
-        }, 0) + action.payload.price
-      };
     case "toggle_cart":
       return {
         ...state,
@@ -45,6 +36,14 @@ export default (state, action) => {
         totalPrice : 0,
         showCart: false,
         confirmed: false,
+      }
+    case "delete_order":
+      return {
+        ...state,
+        items: 
+          state.items.filter(
+            item => item.title !== action.payload
+          )
       }
     default:
       return state;
