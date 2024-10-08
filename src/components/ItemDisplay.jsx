@@ -54,6 +54,7 @@ function ItemDisplay({data, currentIndex}) {
         <div 
           className="text-center text-sm px-2"
           onTouchStart={toggleDescription}
+          onClick={toggleDescription}
         >
           {isShown ? 
             <p className="bg-white w-full absolute 

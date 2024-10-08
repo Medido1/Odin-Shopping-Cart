@@ -1,6 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import Header from "./components/Header";
 import Main from "./components/Main";
+import Footer from "./components/Footer";
 import { GlobalContext } from "./context/GlobalState";
 import FullCart from './components/FullCart';
 
@@ -23,6 +24,7 @@ function App() {
       <FullCart showCart={state.showCart}/>
       <Header isMobile={isMobile}/>
       <Main/>
+      <Footer />
     </>
   )
 }

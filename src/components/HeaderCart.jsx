@@ -11,15 +11,10 @@ function HeaderCart(){
     return acc + (item.price * item.number)
   }, 0)
 
-  useEffect(() => {
-    console.log(state.items)
-  }, [state])
-
   return (
     <div className={`w-[90vw] flex justify-around fixed 
      p-2 rounded-md z-10 bg-slate-300 transition-[top] duration-1000 ease-in-out
-     ${state.showCart ? "top-2 " : "top-[500px]"}
-     lg:top-[580px] xl:top-[580px]`
+     ${state.showCart ? "top-2 " : "top-[500px]"}`
     }
     >
       <p>{`${totalNumber} ${totalNumber === 1 ? "Item" :"items"}`}</p>
